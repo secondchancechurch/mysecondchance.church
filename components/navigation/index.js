@@ -290,11 +290,9 @@ export const Navigation = (props) => {
   const {menu} = data
 
   const handleRouteChange = () => {
-    if (navOpen) {
-      const html = document.getElementsByTagName('html')[0]
-      html.classList.remove('preventScroll')
-      setNavOpen(false)
-    }
+    const html = document.getElementsByTagName('html')[0]
+    html.classList.remove('preventScroll')
+    setNavOpen(false)
   }
 
   useEffect(() => {
