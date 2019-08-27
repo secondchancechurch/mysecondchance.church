@@ -24,7 +24,6 @@
     }
   ],
   "builds": [
-    { "src": "./lib/schemaQuery.js", "use": "@now/node"},
     { "src": "next.config.js", "use": "@now/next" }
   ],
   "build": {
