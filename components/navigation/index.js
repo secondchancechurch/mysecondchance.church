@@ -322,7 +322,8 @@ export const Navigation = (props) => {
                       <li className="top-level">
                         <LinkText
                           light={true}
-                          href={'/give'}
+                          href={'https://live.mysecondchancechurch.com'}
+                          target={"_blank"}
                           hiddenMobile={true}
                         >
                           <FontAwesomeIcon
@@ -349,11 +350,17 @@ export const Navigation = (props) => {
                         }
                       }
 
+                      let slug = item.url
+                      slug = slug.split('/')
+                      slug = slug[slug.length - 1]
+                      console.log(slug)
+
                       return (
                         <li className="top-level">
                           <LinkText
                             onClick={item.title === 'Menu' ? (e) => toggleNav(e)  : null}
-                            href={item.title === 'Menu' ? null : item.url}
+                            href={item.title === 'Menu' ? null : !item.newTab ? `/?slug=${slug}` : item.url}
+                            as={!item.newTab ? item.url : null}
                             target={item.newTab}
                             light={true}
                           >
@@ -381,7 +388,7 @@ export const Navigation = (props) => {
                                     <Logo
                                       width={1/2}
                                     >
-                                      <Link href={"/"}>
+                                      <Link href={"/?slug=homepage"} as={"/"}>
                                         <a itemProp="url" style={{display: 'flex' }}>
                                           <LogoWordmark
                                             light={true}
@@ -427,28 +434,35 @@ export const Navigation = (props) => {
                                             paddingLeft: 0
                                           }}
                                         >
-                                          {item.children.map((item, i) => (
-                                            <li
-                                              key={i}
-                                              style={{
-                                                display: 'block',
-                                                marginBottom: 10
-                                              }}
-                                            >
-                                              <LinkText
-                                                href={item.url}
-                                                target={item.newTab}
-                                                light={true}
+                                          {item.children.map((item, i) => {
+                                            let slug = item.url
+                                            slug = slug.split('/')
+                                            slug = slug[slug.length - 1]
+
+                                            return (
+                                              <li
+                                                key={i}
                                                 style={{
-                                                  fontWeight: 500,
-                                                  letterSpacing: 1.5,
-                                                  textTransform: 'capitalize'
+                                                  display: 'block',
+                                                  marginBottom: 10
                                                 }}
                                               >
-                                                {item.title}
-                                              </LinkText>
-                                            </li>
-                                          ))}
+                                                <LinkText
+                                                  href={!item.newTab ? `/?slug=${slug}` : item.url}
+                                                  as={item.url}
+                                                  target={item.newTab}
+                                                  light={true}
+                                                  style={{
+                                                    fontWeight: 500,
+                                                    letterSpacing: 1.5,
+                                                    textTransform: 'capitalize'
+                                                  }}
+                                                >
+                                                  {item.title}
+                                                </LinkText>
+                                              </li>
+                                            )
+                                          })}
                                         </ul> :
                                         <li>
                                           <LinkText href={item.url} target={item.newTab} light={true}>
