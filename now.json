@@ -1,0 +1,32 @@
+{
+  "name": "scc-website",
+  "env": {
+    "GRAPHQL_ENDPOINT": "@sc-graphql-endpoint"
+  },
+  "version": 2,
+  "public": false,
+  "alias": [
+    "www.mysecondchancechurch.com",
+    "mysecondchancechurch.com"
+  ],
+  "routes": [
+    {
+      "src": "/give/now",
+      "status": 301,
+      "headers": { "Location": "https://pushpay.com/pay/secondchancechurch" }
+    },{
+      "src": "/easter",
+      "status": 301,
+      "headers": { "Location": "/" }
+    },{
+      "src": "/sermons",
+      "dest": "https://youtube.com/c/secondchancechurch"
+    },{
+      "src": "/(?<slug>[^/]*)",
+      "dest": "/?slug=$slug"
+    }
+  ],
+  "builds": [
+    { "src": "next.config.js", "use": "@now/next" }
+  ]
+}
