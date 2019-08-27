@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { withRouter } from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_CONTENT } from '../queries'
 import { NextSeo } from 'next-seo'
@@ -62,7 +63,7 @@ const PlayerStyles = styled.div`
 
 const Page = (props) => {
   const { loading, error, data } = useQuery(GET_CONTENT, {
-    variables: { slug: props.slug || 'homepage' }
+    variables: { slug: props.router.query.slug || 'homepage' }
   });
 
   if (loading) return 'Loading...';
@@ -261,8 +262,8 @@ const Page = (props) => {
   )
 }
 
-Page.getInitialProps = async ({query: {slug}}) => {
-  return { slug }
-}
+// Page.getInitialProps = async ({query: {slug}}) => {
+//   return { slug }
+// }
 
-export default Page
+export default withRouter(Page)
