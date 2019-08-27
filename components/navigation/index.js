@@ -289,13 +289,19 @@ export const Navigation = (props) => {
 
   const {menu} = data
 
-  useEffect(() => {
-
-    Router.events.on('routeChangeComplete', () => {
+  const handleRouteChange = () => {
+    if (navOpen) {
       const html = document.getElementsByTagName('html')[0]
       html.classList.remove('preventScroll')
       setNavOpen(false)
-    })
+    }
+  }
+
+  useEffect(() => {
+    Router.events.on('routeChangeComplete', handleRouteChange)
+    return () => {
+      Router.events.off('routeChangeComplete', handleRouteChange)
+    }
   }, [])
 
   const toggleNav = (e) => {
