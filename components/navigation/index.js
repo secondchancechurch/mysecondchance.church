@@ -295,12 +295,12 @@ export const Navigation = (props) => {
     setNavOpen(false)
   }
 
-  useEffect(() => {
-    Router.events.on('routeChangeComplete', handleRouteChange)
-    return () => {
-      Router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [])
+  // useEffect(() => {
+  //   Router.events.on('routeChangeComplete', handleRouteChange)
+  //   return () => {
+  //     Router.events.off('routeChangeComplete', handleRouteChange)
+  //   }
+  // }, [])
 
   const toggleNav = (e) => {
     e.preventDefault()
