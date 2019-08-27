@@ -1,8 +1,5 @@
 {
   "name": "scc-website",
-  "env": {
-    "GRAPHQL_ENDPOINT": "@sc-graphql-endpoint"
-  },
   "version": 2,
   "public": false,
   "alias": [
@@ -28,5 +25,10 @@
   ],
   "builds": [
     { "src": "next.config.js", "use": "@now/next" }
-  ]
+  ],
+  "build": {
+    "env": {
+      "GRAPHQL_ENDPOINT": "@sc-graphql-endpoint"
+    }
+  }
 }
