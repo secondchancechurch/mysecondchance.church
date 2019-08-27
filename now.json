@@ -30,7 +30,7 @@
   "build": {
     "env": {
       "GRAPHQL_ENDPOINT": "@sc-graphql-endpoint",
-      "FONT_AWESOME_TOKEN": "@fa-token"
+      "NPM_RC": "@npm-rc"
     }
   }
 }
