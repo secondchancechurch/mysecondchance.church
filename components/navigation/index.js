@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import Router from 'next/router'
 import gql from 'graphql-tag'
 import { useQuery } from '@apollo/react-hooks'
 import Link from 'next/link'
@@ -288,6 +289,15 @@ export const Navigation = (props) => {
 
   const {menu} = data
 
+  useEffect(() => {
+
+    Router.events.on('routeChangeComplete', () => {
+      const html = document.getElementsByTagName('html')[0]
+      html.classList.remove('preventScroll')
+      setNavOpen(false)
+    })
+  }, [])
+
   const toggleNav = (e) => {
     e.preventDefault()
     const html = document.getElementsByTagName('html')[0]
@@ -353,7 +363,6 @@ export const Navigation = (props) => {
                       let slug = item.url
                       slug = slug.split('/')
                       slug = slug[slug.length - 1]
-                      console.log(slug)
 
                       return (
                         <li className="top-level">
