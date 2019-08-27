@@ -121,27 +121,16 @@ const WatchLive = styled.div`
   }
 `
 
-const Descriptor = styled.h1`
-  
-  
-`
-
-export class Hero extends React.Component {
+export class Hero extends React.PureComponent {
   constructor() {
     super();
     this.state = {
-      attribute: null,
-      rotating: [],
       index: 0
     }
   }
 
-  componentWillMount = () => {
-    this.setState({rotating: this.props.rotation})
-  }
-
   componentDidMount = () => {
-    if (this.state.rotating && this.state.rotating.length) {
+    if (this.props.rotation && this.props.rotation.length > 0) {
       this.changeAttribute();
 
       setInterval( () => {
@@ -154,12 +143,11 @@ export class Hero extends React.Component {
 
     let currentAttribute = this.state.index + 1;
 
-    if ( currentAttribute < 0 || currentAttribute >= this.state.rotating.length ) {
+    if ( currentAttribute < 0 || currentAttribute >= this.props.rotation.length ) {
       currentAttribute = 0
     }
 
     this.setState({
-      attribute: this.state.rotating[currentAttribute].item,
       index: currentAttribute
     });
   }
@@ -174,7 +162,7 @@ export class Hero extends React.Component {
               <div style={{ display: 'inline-block'}}>
                 <Flex alignItems="center">
                   <Box width={[1]} p={[4,6]} className="overlay">
-                    <h1 style={{ marginBottom: props.subheading ? 10 : 0 }}>{props.heading}{this.state.rotating && this.state.rotating.length > 0 && <><br /><span>{this.state.attribute}</span></>}</h1>
+                    <h1 style={{ marginBottom: props.subheading ? 10 : 0 }}>{props.heading}{this.props.rotation && this.props.rotation.length > 0 && <><br /><span>{this.props.rotation[this.state.index].item}</span></>}</h1>
                     {props.subheading &&
                       <h3 style={{fontSize: '1.5em', lineHeight: '1.5em', fontWeight: '600', marginTop: 0}}
                       >
