@@ -116,6 +116,7 @@ function Locations() {
                       </h2>
                       {data.allCampuses.map((location, i) => (
                         <Flex
+                          key={i}
                           flexWrap="wrap"
                           style={{
                             borderBottom: `${this.props.locations.length - 1 !== i ? 1 : 0}px solid rgba(19,19,19,0.15)`,
