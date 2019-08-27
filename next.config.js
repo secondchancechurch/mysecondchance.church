@@ -1,3 +1,8 @@
+require('dotenv').config()
+
 module.exports = {
-  target: 'serverless'
+  target: 'serverless',
+  env: {
+    'GRAPHQL_ENDPOINT': process.env.GRAPHQL_ENDPOINT
+  }
 }
