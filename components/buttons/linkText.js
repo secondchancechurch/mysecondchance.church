@@ -73,8 +73,6 @@ export const ButtonStyle = styled(LinkStyle)`
   }
   
   span {
-    //padding: 6px 20px;
-    //padding: 14px 20px 13px;
     padding: ${props => props.outlined ? '10px 18px 8px' : '12px 20px 10px'};
     display: block;
     background-image: linear-gradient(45deg, ${props => props.light ? colors.lightPrimary : colors.primary} 10%,transparent 0);
@@ -139,7 +137,7 @@ export const LinkText = (props) => {
   }
 
   return (
-    <Link href={props.href}>
+    <Link href={props.href} as={props.as} passHref>
       <LinkStyle active={props.active} light={props.light}
        style={props.style}
       >
@@ -190,7 +188,7 @@ export const Button = (props) => {
   }
 
   return (
-    <Link href={props.href}>
+    <Link href={props.href} as={props.as} passHref>
       <ButtonStyle
         light={props.light}
         outlined={props.outlined}
