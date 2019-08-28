@@ -3,21 +3,21 @@ import React from 'react'
 import Error from 'next/error'
 import { withRouter } from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
-import { GET_CONTENT } from '../../queries'
+import { GET_CONTENT } from '../queries'
 import { NextSeo } from 'next-seo'
 
 import { Flex, Box } from '@rebass/grid'
 
-import { colors } from "../../styles/vars"
-import {Container} from "../../layout/container"
-import {Hero} from "../../components/hero"
+import { colors } from "../styles/vars"
+import {Container} from "../layout/container"
+import {Hero} from "../components/hero"
 import ReactPlayer from 'react-player'
 
 import styled from 'styled-components'
 
-import {CurrentSeries} from '../../components/currentSeries';
-import {Campuses} from '../../components/locations';
-import {Button} from '../../components/buttons/linkText';
+import {CurrentSeries} from '../components/currentSeries';
+import {Campuses} from '../components/locations';
+import {Button} from '../components/buttons/linkText';
 
 const BackgroundItem = styled.div`
   background-color: ${props => props.color ? props.color : colors.lightSecondary};
