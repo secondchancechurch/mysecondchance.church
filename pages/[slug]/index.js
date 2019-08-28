@@ -67,6 +67,8 @@ const Page = (props) => {
     variables: { slug: props.slug }
   });
 
+  console.log(props.slug)
+
   if (loading) return 'Loading...';
   if (error) {
     if (process.browser) { return <Error statusCode={404} /> }
