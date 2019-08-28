@@ -372,8 +372,7 @@ export const Navigation = (props) => {
                         <li className="top-level">
                           <LinkText
                             onClick={item.title === 'Menu' ? (e) => toggleNav(e)  : null}
-                            href={item.title === 'Menu' ? null : !item.newTab ? `/?slug=${slug}` : item.url}
-                            as={!item.newTab ? item.url : null}
+                            href={item.url}
                             target={item.newTab}
                             light={true}
                           >
@@ -401,7 +400,7 @@ export const Navigation = (props) => {
                                     <Logo
                                       width={1/2}
                                     >
-                                      <Link href={"/?slug=homepage"} as={"/"}>
+                                      <Link href={"/"}>
                                         <a itemProp="url" style={{display: 'flex' }}>
                                           <LogoWordmark
                                             light={true}
@@ -461,8 +460,7 @@ export const Navigation = (props) => {
                                                 }}
                                               >
                                                 <LinkText
-                                                  href={!item.newTab ? `/?slug=${slug}` : item.url}
-                                                  as={item.url}
+                                                  href={item.url}
                                                   target={item.newTab}
                                                   light={true}
                                                   style={{
