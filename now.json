@@ -18,6 +18,9 @@
     },{
       "src": "/sermons",
       "dest": "https://youtube.com/c/secondchancechurch"
+    },{
+      "src": "/",
+      "dest": "homepage"
     }
   ],
   "builds": [

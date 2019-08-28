@@ -64,7 +64,7 @@ const PlayerStyles = styled.div`
 
 const Page = (props) => {
   const { loading, error, data } = useQuery(GET_CONTENT, {
-    variables: { slug: props.slug === '[slug]' ? 'homepage' : props.slug }
+    variables: { slug: props.slug }
   });
 
   if (loading) return 'Loading...';
