@@ -1,8 +1,7 @@
 import React from 'react'
 import App, { Container } from 'next/app'
 import { StoreProvider } from "../components/store"
-import withApolloClient from '../lib/with-apollo-client'
-import { ApolloProvider } from '@apollo/react-hooks'
+import { withApollo } from '../lib/apollo';
 
 import { Reset } from '../styles/reset';
 import { Fonts } from '../styles/fonts';
@@ -21,24 +20,22 @@ class MyApp extends App {
 
     return (
       <Container>
-        <ApolloProvider client={apolloClient}>
-          {/* Then we wrap our components with the provider */}
-          <StoreProvider>
-            <>
-              <Reset/>
-              <Fonts/>
-              {/* Navigation */}
-              <TopColorBox />
-              <Navigation />
-              <Component {...pageProps} />
-              <Footer />
-            </>
-          </StoreProvider>
-        </ApolloProvider>
+        {/* Then we wrap our components with the provider */}
+        <StoreProvider>
+          <>
+            <Reset/>
+            <Fonts/>
+            {/* Navigation */}
+            <TopColorBox />
+            <Navigation />
+            <Component {...pageProps} />
+            <Footer />
+          </>
+        </StoreProvider>
       </Container>
     )
   }
 }
 
 // export default MyApp
-export default withApolloClient(MyApp)
+export default withApollo(MyApp)

@@ -63,7 +63,8 @@ const PlayerStyles = styled.div`
 
 const Page = (props) => {
   const { loading, error, data } = useQuery(GET_CONTENT, {
-    variables: { slug: props.router.query.slug || 'homepage' }
+    variables: { slug: props.router.query.slug || 'homepage' },
+    notifyOnNetworkStatusChange: true
   });
 
   if (loading) return 'Loading...';

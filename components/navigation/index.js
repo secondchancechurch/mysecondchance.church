@@ -32,11 +32,6 @@ const Header = styled.div`
 `;
 
 const Logo = styled(Box)`
-  // width: 25%;
-  //
-  // @media (max-width: 768px) {
-  //   width: 50%;
-  // }
   text-align: center;
   
   .wordmark {
@@ -262,6 +257,9 @@ library.add(
 )
 
 const GET_NAV = gql`{
+  churchOnline {
+    isLive
+  }
   menu {
     title
     url
@@ -294,13 +292,6 @@ export const Navigation = (props) => {
     html.classList.remove('preventScroll')
     setNavOpen(false)
   }
-
-  // useEffect(() => {
-  //   Router.events.on('routeChangeComplete', handleRouteChange)
-  //   return () => {
-  //     Router.events.off('routeChangeComplete', handleRouteChange)
-  //   }
-  // }, [])
 
   const toggleNav = (e) => {
     e.preventDefault()
