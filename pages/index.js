@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Error from 'next/error'
+import { withRouter } from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_CONTENT } from '../queries'
 import { NextSeo } from 'next-seo'
@@ -66,16 +68,21 @@ const Page = (props) => {
   });
 
   if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
+  if (error) {
+    if (process.browser) { return <Error statusCode={404} /> }
+    const e = new Error()
+    e.code = 'ENOENT'
+    throw e
+  }
 
   return(
     <div>
       <NextSeo
         title={data.page.seo.title}
         description={data.page.seo.description}
-        // canonical="https://www.canonical.ie/"
+        canonical={`https://mysecondchancechurch.com${props.router.asPath}`}
         openGraph={{
-          // url: 'https://www.url.ie/a',
+          url: `https://mysecondchancechurch.com${props.router.asPath}`,
           title: data.page.seo.og.title,
           description: data.page.seo.og.description,
           images: [
@@ -265,4 +272,4 @@ Page.getInitialProps = async ({query: {slug}}) => {
   return { slug }
 }
 
-export default Page
+export default withRouter(Page)
