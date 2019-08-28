@@ -64,7 +64,7 @@ const PlayerStyles = styled.div`
 
 const Page = (props) => {
   const { loading, error, data } = useQuery(GET_CONTENT, {
-    variables: { slug: props.slug || 'homepage' }
+    variables: { slug: 'homepage' }
   });
 
   console.log(props.slug)
@@ -268,10 +268,6 @@ const Page = (props) => {
           }})}
       </div>
   )
-}
-
-Page.getInitialProps = async ({query: {slug}}) => {
-  return { slug }
 }
 
 export default withRouter(Page)
