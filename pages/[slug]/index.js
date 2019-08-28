@@ -71,11 +71,10 @@ const Page = (props) => {
 
   if (loading) return 'Loading...';
   if (error) {
-return <div>test</div>
-    // if (process.browser) { return <Error statusCode={404} /> }
-    // const e = new Error()
-    // e.code = 'ENOENT'
-    // throw e
+    if (process.browser) { return <Error statusCode={404} /> }
+    const e = new Error()
+    e.code = 'ENOENT'
+    throw e
   }
 
   return(
