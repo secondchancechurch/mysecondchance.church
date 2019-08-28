@@ -66,7 +66,11 @@ const Page = (props) => {
   });
 
   if (loading) return 'Loading...';
-  if (error) return `Error! ${error.message}`;
+  if (error) {
+    const e = new Error("Response not found");
+    e.code = "ENOENT";
+    throw e;
+  }
 
   return(
     <div>
