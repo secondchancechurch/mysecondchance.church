@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Error from 'next/error'
+import { withRouter } from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_CONTENT } from '../queries'
 import { NextSeo } from 'next-seo'
@@ -63,7 +64,7 @@ const PlayerStyles = styled.div`
 
 const Page = (props) => {
   const { loading, error, data } = useQuery(GET_CONTENT, {
-    variables: { slug: 'homepage' }
+    variables: { slug: props.slug || 'homepage' }
   });
 
   console.log(props.slug)
@@ -81,9 +82,9 @@ const Page = (props) => {
         <NextSeo
             title={data.page.seo.title}
             description={data.page.seo.description}
-            canonical={`https://mysecondchancechurch.com`}
+            canonical={`https://mysecondchancechurch.com${props.router.asPath}`}
             openGraph={{
-              url: `https://mysecondchancechurch.com`,
+              url: `https://mysecondchancechurch.com${props.router.asPath}`,
               title: data.page.seo.og.title,
               description: data.page.seo.og.description,
               images: [
@@ -269,4 +270,8 @@ const Page = (props) => {
   )
 }
 
-export default Page
+Page.getInitialProps = async ({query: {slug}}) => {
+  return { slug }
+}
+
+export default withRouter(Page)
