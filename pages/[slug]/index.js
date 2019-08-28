@@ -64,17 +64,18 @@ const PlayerStyles = styled.div`
 
 const Page = (props) => {
   const { loading, error, data } = useQuery(GET_CONTENT, {
-    variables: { slug: props.slug }
+    variables: { slug: props.slug || 'homepage' }
   });
 
-  console.log(props.slug)
+  console.log(props)
 
   if (loading) return 'Loading...';
   if (error) {
-    if (process.browser) { return <Error statusCode={404} /> }
-    const e = new Error()
-    e.code = 'ENOENT'
-    throw e
+
+    // if (process.browser) { return <Error statusCode={404} /> }
+    // const e = new Error()
+    // e.code = 'ENOENT'
+    // throw e
   }
 
   return(
