@@ -10,6 +10,11 @@ export const GET_CONTENT = gql`
         item
       }
       backgroundVideo
+      color {
+        handle
+        custom
+        opacity
+      }
       content {
         ... on Locations {
           type
@@ -70,6 +75,28 @@ export const GET_CONTENT = gql`
           type
           heading
           video
+        }
+        ... on Faq {
+          type
+          heading
+          items {
+            heading
+            content
+          }
+          backgroundColor {
+            handle
+            custom
+            opacity
+          }
+        }
+        ... on App {
+          type
+          image
+          video
+          heading
+          content
+          iOS
+          android
         }
       }
       seo {

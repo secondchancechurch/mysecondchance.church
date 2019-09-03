@@ -56,7 +56,7 @@ const Page = (props) => {
         backgroundVideo={data.page.backgroundVideo}
       />
 
-      <PageBuilder content={data.page.content} />
+      <PageBuilder content={data.page.content} color={data.page.color} />
     </div>
   )
 }
