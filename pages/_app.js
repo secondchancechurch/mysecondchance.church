@@ -28,7 +28,7 @@ class MyApp extends App {
               <Reset/>
               <Fonts/>
               {/* Navigation */}
-              <TopColorBox />
+              {/*<TopColorBox />*/}
               <Navigation />
               <Component {...pageProps} />
               <Footer />

@@ -28,7 +28,8 @@ export const FAQ = (props) => {
         <ContainerWrapper>
           <Flex
             flexWrap={"wrap"}
-            px={4}
+            px={[2,4]}
+            py={[2,4]}
           >
             <Box width={1} style={{ textAlign: 'center' }}>
               <h2>{props.heading}</h2>

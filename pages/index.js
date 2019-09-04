@@ -5,6 +5,7 @@ import { withRouter } from 'next/router'
 import { useQuery } from '@apollo/react-hooks'
 import { GET_CONTENT } from '../queries'
 import { NextSeo } from 'next-seo'
+import { TopColorBox } from '../components/topColorBox'
 
 import {Hero} from "../components/hero"
 import {PageBuilder} from '../components/pageBuilder';
@@ -48,6 +49,9 @@ const Page = (props) => {
           cardType: data.page.seo.twitter.card,
         }}
       />
+      {/* Top Color Box */}
+      <TopColorBox color={data.page.color} />
+
       {/* Hero */}
       <Hero
         image={data.page.image}
@@ -56,6 +60,7 @@ const Page = (props) => {
         backgroundVideo={data.page.backgroundVideo}
       />
 
+      {/* Page Content */}
       <PageBuilder
         content={data.page.content}
       />

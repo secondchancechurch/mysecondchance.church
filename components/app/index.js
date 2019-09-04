@@ -7,20 +7,14 @@ import styled, { css } from 'styled-components'
 import { colors } from '../.././styles/vars'
 
 const PlayerStyles = styled.div`
-width: 100%;
-height: 100%;
-position: relative;
-padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
-box-sizing: border-box;
-border-radius: 15px;
-overflow: hidden;
 
 .react-player {
-  position: absolute;
+  border-radius: 15px;
+  overflow: hidden;
   top: 0;
   left: 0;
-  /* TODO: Add option to specify player color */
-  color: ${colors.primary};
+  max-width: 100%;
+  height: auto !important;
 }
 `
 
@@ -38,8 +32,9 @@ export const App = (props) =>
   <section>
     <Container>
       <Flex
+        flexWrap={'wrap'}
         alignItems={'center'}
-        p={4}
+        p={[2,4]}
       >
       <Box width={[1,1,1/2]}>
         <PlayerStyles>

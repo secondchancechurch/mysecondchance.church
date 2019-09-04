@@ -10,16 +10,16 @@ import moment from 'moment-timezone'
 const BackgroundItem = styled.div`
   background-color: ${props => props.color ? props.color : colors.lightSecondary};
   position: absolute;
-  top: -1.5rem;
-  bottom: -1.5rem;
+  top: 0;
+  bottom: 0;
   left: 0;
   right: 0;
   z-index: -1;
   border-radius: 15px;
   
   @media (min-width: 769px) {
-    left: ${props  => props.reversed ? '-32px' : '3rem'};
-    right: ${props => props.reversed ? '3rem' : '-32px'};
+    left: ${props  => props.reversed ? '-32px' : '15%'};
+    right: ${props => props.reversed ? '15%' : '-32px'};
   }
 `
 
@@ -53,8 +53,8 @@ const Image = styled(Box)`
   border-radius: 15px 15px 0 0;
   margin-top: -32px;
   
-  @media (min-width: 768px) {
-    margin-left: -32px;
+  @media (min-width: 52rem) {
+    // margin-left: -32px;
     margin-top: 0;
     border-radius: 15px;
   }
@@ -63,7 +63,7 @@ const Image = styled(Box)`
 export const Campuses = ( props ) =>
   <section>
     <Container>
-      <Flex flexWrap="wrap" p={[1,4]}>
+      <Flex flexWrap="wrap">
         <Box width={1}>
           <Flex
             alignItems="center"
