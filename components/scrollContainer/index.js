@@ -49,7 +49,13 @@ const scrollContainer = (direction) => {
   const scrollWidth = container.scrollWidth - container.clientWidth
   const currentPosition = container.scrollLeft
   const containerWidth = container.clientWidth
-  const scrollIncriment = containerWidth / 3.25
+  const windowWidth = window.innerWidth
+
+  let scrollIncriment = containerWidth / 3.25
+
+  if (windowWidth < 769) {
+    scrollIncriment = windowWidth * 0.815
+  }
 
   if (direction === 'right') {
     let newScrollPosition = currentPosition + scrollIncriment
@@ -92,7 +98,7 @@ export const ScrollContainer = ({ children, key, previous, next }) => {
           {children}
         </FlexScroll>
       </FlexScrollWrapper>
-      <Flex style={{ textAlign: 'center' }}>
+      <Flex style={{ textAlign: 'center' }} p={[2,4]}>
         <Box width={1/2}>
           <LinkText
             onClick={() => setScrollPosition(scrollContainer('left'))}
