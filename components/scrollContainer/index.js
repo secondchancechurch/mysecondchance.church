@@ -5,33 +5,37 @@ import {Container} from '../../layout/container'
 
 import styled from 'styled-components'
 import {Flex,Box} from '@rebass/grid'
+import {colors} from '../../styles/vars'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircle, faArrowLeft, faArrowRight, faChevronLeft, faChevronRight } from '@fortawesome/pro-solid-svg-icons'
 
 const FlexScrollWrapper = styled.section`
   position: relative;
 
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 20px;
-    z-index: 1;
-
-    @media (min-width: 52em) {
-      width: 40px;
-    }
-  }
-
-  &:before {
-    background: linear-gradient(90deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 100%);
-    left: 0;
-  }
-
-  &:after {
-    background: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0.75) 100%);
-    right: 0;
-  }
+  //&:before,
+  //&:after {
+  //  content: '';
+  //  position: absolute;
+  //  top: 0;
+  //  bottom: 0;
+  //  width: 20px;
+  //  z-index: 1;
+  //
+  //  @media (min-width: 52em) {
+  //    width: 40px;
+  //  }
+  //}
+  //
+  //&:before {
+  //  background: linear-gradient(90deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 100%);
+  //  left: 0;
+  //}
+  //
+  //&:after {
+  //  background: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0.75) 100%);
+  //  right: 0;
+  //}
 `
 
 const FlexScroll = styled(Flex)`
@@ -51,10 +55,10 @@ const scrollContainer = (direction) => {
   const containerWidth = container.clientWidth
   const windowWidth = window.innerWidth
 
-  let scrollIncriment = containerWidth / 3.25
+  let scrollIncriment = containerWidth * 0.3334
 
   if (windowWidth < 769) {
-    scrollIncriment = windowWidth * 0.815
+    scrollIncriment = containerWidth
   }
 
   if (direction === 'right') {
@@ -78,6 +82,42 @@ const scrollContainer = (direction) => {
   }
 }
 
+const Navigation = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  height: 100%;
+  top: 0;
+  left: ${props => props.right ? 'unset' : 0};
+  right: ${props => props.right ? 0 : 'unset'};
+  
+  button {
+    width: 36px;
+    height: 36px;
+    transition: all 0.25s ease-in-out 0.15s;
+    
+    &:not(:disabled) {
+      span {
+        svg {
+          fill: ${colors.primary};
+        }
+      }
+    }
+
+    span {
+      position: relative;
+      left: -7px;
+    }
+  }
+  
+  &:hover {
+    button:not(:disabled) {
+      cursor: pointer;
+    }
+  }
+`
+
 
 // TODO: Track scroll position so that we can disable buttons
 export const ScrollContainer = ({ children, key, previous, next }) => {
@@ -94,28 +134,50 @@ export const ScrollContainer = ({ children, key, previous, next }) => {
   return (
     <Container>
       <FlexScrollWrapper>
+        <Navigation>
+          <button
+            onClick={() => setScrollPosition(scrollContainer('left'))}
+            disabled={scrollPosition <= 10}
+          >
+            <span className="fa-layers fa-fw">
+              <FontAwesomeIcon icon={faCircle} size="2x" />
+              <FontAwesomeIcon icon={faArrowLeft} inverse transform="shrink-2 right-6" />
+            </span>
+          </button>
+        </Navigation>
         <FlexScroll id={`scrollingContainer`} mb={5}>
           {children}
         </FlexScroll>
-      </FlexScrollWrapper>
-      <Flex style={{ textAlign: 'center' }} p={[2,4]}>
-        <Box width={1/2}>
-          <LinkText
-            onClick={() => setScrollPosition(scrollContainer('left'))}
-            disabled={scrollPosition === 0}
-          >
-            {previous || 'See Newer'}
-          </LinkText>
-        </Box>
-        <Box width={1/2}>
-          <LinkText
+        <Navigation right>
+          <button
             onClick={() => setScrollPosition(scrollContainer('right'))}
-            disabled={scrollPosition >= scrollWidth}
+            disabled={scrollPosition >= scrollWidth - 10}
           >
-            {next || 'See Older'}
-          </LinkText>
-        </Box>
-      </Flex>
+            <span className="fa-layers fa-fw">
+              <FontAwesomeIcon icon={faCircle} size="2x" />
+              <FontAwesomeIcon icon={faArrowRight} inverse transform="shrink-2 right-6" />
+            </span>
+          </button>
+        </Navigation>
+      </FlexScrollWrapper>
+      {/*<Flex style={{ textAlign: 'center' }} p={[2,4]}>*/}
+      {/*  <Box width={1/2}>*/}
+      {/*    <LinkText*/}
+      {/*      onClick={() => setScrollPosition(scrollContainer('left'))}*/}
+      {/*      disabled={scrollPosition <= 0}*/}
+      {/*    >*/}
+      {/*      {previous || 'See Newer'}*/}
+      {/*    </LinkText>*/}
+      {/*  </Box>*/}
+      {/*  <Box width={1/2}>*/}
+      {/*    <LinkText*/}
+      {/*      onClick={() => setScrollPosition(scrollContainer('right'))}*/}
+      {/*      disabled={scrollPosition >= scrollWidth}*/}
+      {/*    >*/}
+      {/*      {next || 'See Older'}*/}
+      {/*    </LinkText>*/}
+      {/*  </Box>*/}
+      {/*</Flex>*/}
     </Container>
   )
 }

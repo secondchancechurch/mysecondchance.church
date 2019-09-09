@@ -13,10 +13,10 @@ const ContainerWrapper = styled(Container)`
 `
 
 const FAQItem = styled(Box)`
-  flex: 0 0 90%;
+  flex: 0 0 100%;
   
   @media (min-width: 52em) {
-    flex: 0 0 30%;
+    flex: 0 0 33.33%;
   }
 `
 

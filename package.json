@@ -1,5 +1,8 @@
 {
   "name": "create-next-example-app",
+  "engines": {
+    "node": "10.x"
+  },
   "scripts": {
     "dev": "now dev",
     "now-build": "node ./lib/schemaQuery.js && next build",
