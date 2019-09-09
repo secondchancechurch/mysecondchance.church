@@ -12,30 +12,6 @@ import { faCircle, faArrowLeft, faArrowRight, faChevronLeft, faChevronRight } fr
 
 const FlexScrollWrapper = styled.section`
   position: relative;
-
-  //&:before,
-  //&:after {
-  //  content: '';
-  //  position: absolute;
-  //  top: 0;
-  //  bottom: 0;
-  //  width: 20px;
-  //  z-index: 1;
-  //
-  //  @media (min-width: 52em) {
-  //    width: 40px;
-  //  }
-  //}
-  //
-  //&:before {
-  //  background: linear-gradient(90deg, rgba(255,255,255,0.75) 0%, rgba(255,255,255,0) 100%);
-  //  left: 0;
-  //}
-  //
-  //&:after {
-  //  background: linear-gradient(90deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0.75) 100%);
-  //  right: 0;
-  //}
 `
 
 const FlexScroll = styled(Flex)`
@@ -118,9 +94,7 @@ const Navigation = styled.div`
   }
 `
 
-
-// TODO: Track scroll position so that we can disable buttons
-export const ScrollContainer = ({ children, key, previous, next }) => {
+export const ScrollContainer = ({ children }) => {
   const [scrollPosition, setScrollPosition] = useState(0)
   const [scrollWidth, setScrollWidth] = useState(0)
 
@@ -160,24 +134,6 @@ export const ScrollContainer = ({ children, key, previous, next }) => {
           </button>
         </Navigation>
       </FlexScrollWrapper>
-      {/*<Flex style={{ textAlign: 'center' }} p={[2,4]}>*/}
-      {/*  <Box width={1/2}>*/}
-      {/*    <LinkText*/}
-      {/*      onClick={() => setScrollPosition(scrollContainer('left'))}*/}
-      {/*      disabled={scrollPosition <= 0}*/}
-      {/*    >*/}
-      {/*      {previous || 'See Newer'}*/}
-      {/*    </LinkText>*/}
-      {/*  </Box>*/}
-      {/*  <Box width={1/2}>*/}
-      {/*    <LinkText*/}
-      {/*      onClick={() => setScrollPosition(scrollContainer('right'))}*/}
-      {/*      disabled={scrollPosition >= scrollWidth}*/}
-      {/*    >*/}
-      {/*      {next || 'See Older'}*/}
-      {/*    </LinkText>*/}
-      {/*  </Box>*/}
-      {/*</Flex>*/}
     </Container>
   )
 }
