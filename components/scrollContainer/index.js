@@ -8,7 +8,7 @@ import {Flex,Box} from '@rebass/grid'
 import {colors} from '../../styles/vars'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircle, faArrowLeft, faArrowRight, faChevronLeft, faChevronRight } from '@fortawesome/pro-solid-svg-icons'
+import { faCircle, faArrowLeft, faArrowRight } from '@fortawesome/pro-solid-svg-icons'
 
 const FlexScrollWrapper = styled.section`
   position: relative;
@@ -67,11 +67,11 @@ const Navigation = styled.div`
   top: 0;
   left: ${props => props.right ? 'unset' : 0};
   right: ${props => props.right ? 0 : 'unset'};
-  
+
   button {
     width: 36px;
     height: 36px;
-    
+
     &:not(:disabled) {
       .fa-circle {
         color: ${colors.darkPrimary};
@@ -84,11 +84,11 @@ const Navigation = styled.div`
       left: -7px;
     }
   }
-  
+
   &:hover {
     button:not(:disabled) {
       cursor: pointer;
-      
+
       .fa-circle {
         color: ${colors.primary};
         transition: all 0.25s ease-in-out;
