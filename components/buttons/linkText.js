@@ -54,6 +54,18 @@ export const LinkStyle = styled.a`
       width: 100%;
     }
   }
+  
+  &:disabled {
+    opacity: 0.5;
+    
+    &:hover {
+      cursor: auto;
+      
+      &:after {
+        width: 0;
+      }
+    }
+  }
 `
 
 export const ButtonStyle = styled(LinkStyle)`
@@ -108,7 +120,7 @@ export const ButtonStyle = styled(LinkStyle)`
 export const LinkText = (props) => {
   if (props.onClick || props.type === 'submit') {
     return (
-      <LinkStyle as={"button"} type={props.type} onClick={props.onClick} light={props.light}>
+      <LinkStyle as={"button"} type={props.type} onClick={props.onClick} light={props.light} disabled={props.disabled}>
         <span>
           {props.children || props.text || 'Learn More'}
         </span>
@@ -179,7 +191,7 @@ export const Button = (props) => {
 
   if (props.onClick || props.type === 'submit') {
     return(
-      <ButtonStyle as={"button"} type={props.type} onClick={props.onClick} light={props.light}>
+      <ButtonStyle as={"button"} type={props.type} onClick={props.onClick} light={props.light} disabled={props.disabled}>
         <span>
           {props.children || props.text || 'Learn More'}
         </span>

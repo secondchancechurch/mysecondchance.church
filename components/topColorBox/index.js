@@ -52,13 +52,18 @@ const StyleWrapper = styled.div`
   }
 `
 
-export const TopColorBox = (props) =>
+export const TopColorBox = ({ color }) =>
   <StyleWrapper>
     <div className="grid-container">
       <Flex>
         <Box width={[0, 2/5, 1/4]} />
         <Box width={[1, 3/5, 3/4]} >
-          <div className="color-box" style={{ background: props.color ? props.color : colors.primary }} />
+          <div
+            className="color-box"
+            style={{
+              background: color ? color.handle ? colors[color.handle] : color.custom : colors.primary
+            }}
+          />
         </Box>
       </Flex>
     </div>

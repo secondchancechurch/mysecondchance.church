@@ -23,10 +23,9 @@ const HeroStyles = styled(Flex)`
   border-radius: 15px;
   overflow: hidden;
   
-  
   @media (max-width: 52em) {
     margin-top: 10px;
-    min-height: 80vh;
+    min-height: 60vh;
     margin-bottom: 10px;
   }
   

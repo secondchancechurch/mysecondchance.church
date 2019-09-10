@@ -7,7 +7,8 @@ export const colors = {
   darkTertiary: '#727272',
   lightPrimary: '#FFFFFF',
   lightSecondary: '#F4F4F4',
-  lightTertiary: '#2f2f2f90'
+  lightTertiary: '#2f2f2f90',
+  gKidz: '#FF3300'
 };
 
 export const fonts = {

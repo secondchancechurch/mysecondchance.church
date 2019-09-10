@@ -5,6 +5,8 @@ import {CurrentSeries} from '../currentSeries'
 import {SideBySide} from '../sideBySide'
 import {Video} from '../video'
 import {Body} from '../body'
+import {FAQ} from '../faq'
+import {App} from '../app'
 
 export const PageBuilder = (props) =>
   <>
@@ -29,6 +31,14 @@ export const PageBuilder = (props) =>
         case 'Body':
           return (
             <Body key={i} {...item} />
+          )
+        case 'Faq':
+          return (
+            <FAQ key={i} {...item} />
+          )
+        case 'App':
+          return (
+            <App key={i} {...item} color={props.color} />
           )
     }})}
   </>

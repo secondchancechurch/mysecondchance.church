@@ -8,6 +8,7 @@ import { NextSeo } from 'next-seo'
 
 import {Hero} from "../../components/hero"
 import {PageBuilder} from '../../components/pageBuilder'
+import {TopColorBox} from '../../components/topColorBox';
 
 const Page = (props) => {
   const { loading, error, data } = useQuery(GET_CONTENT, {
@@ -48,6 +49,9 @@ const Page = (props) => {
           cardType: data.page.seo.twitter.card,
         }}
       />
+      {/* Top Color Box */}
+      <TopColorBox color={data.page.color} />
+
       {/* Hero */}
       <Hero
         image={data.page.image}
@@ -56,7 +60,8 @@ const Page = (props) => {
         backgroundVideo={data.page.backgroundVideo}
       />
 
-      <PageBuilder content={data.page.content} />
+      {/* Page Content */}
+      <PageBuilder content={data.page.content} color={data.page.color} />
     </div>
   )
 }
