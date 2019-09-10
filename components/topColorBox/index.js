@@ -13,30 +13,26 @@ const StyleWrapper = styled.div`
   top: 0;
   width: 100%;
   z-index: -1;
-  
+
   @media (min-width: 52em) {
     left: 50%;
     transform: translate(-50%);
     max-width: 106.66667rem;
   }
-  
+
   .grid-container {
     margin-bottom: 7.22222rem;
     margin-left: auto;
     margin-right: auto;
-    
+
     .color-box {
       height: 40rem;
-      //max-width: 56.88889rem;
-      
-      @media only screen and (min-width: 108.66667rem) {
-        border-radius: 0 0 15px 15px;
-      }
-      
+      border-radius: 0 0 15px 15px;
+
       @media only screen and (max-width: 1919px) and (min-width: 1440px) {
         height: 37.77778rem;
       }
-      
+
       @media only screen and (max-width: 1279px) and (min-width: 1024px) {
         height: 28.88889rem;
       }
@@ -44,7 +40,7 @@ const StyleWrapper = styled.div`
       @media only screen and (max-width: 1023px) and (min-width: 768px) {
         height: 24.44444rem;
       }
-      
+
       @media only screen and (max-width: 767px) {
         height: 24rem;
       }
