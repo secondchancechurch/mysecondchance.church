@@ -71,13 +71,11 @@ const Navigation = styled.div`
   button {
     width: 36px;
     height: 36px;
-    transition: all 0.25s ease-in-out 0.15s;
     
     &:not(:disabled) {
-      span {
-        svg {
-          fill: ${colors.primary};
-        }
+      .fa-circle {
+        color: ${colors.darkPrimary};
+        transition: all 0.25s ease-in-out;
       }
     }
 
@@ -90,6 +88,11 @@ const Navigation = styled.div`
   &:hover {
     button:not(:disabled) {
       cursor: pointer;
+      
+      .fa-circle {
+        color: ${colors.primary};
+        transition: all 0.25s ease-in-out;
+      }
     }
   }
 `
