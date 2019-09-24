@@ -20,46 +20,42 @@ const FAQItem = styled(Box)`
   }
 `
 
-export const FAQ = (props) => {
-  const [activeItem, setActiveItem] = useState()
-
-  return (
-      <section>
-        <ContainerWrapper>
-          <Flex
-            flexWrap={"wrap"}
-            px={[2,4]}
-            pt={[4]}
+export const FAQ = (props) =>
+  <section>
+    <ContainerWrapper>
+      <Flex
+        flexWrap={"wrap"}
+        px={[2,4]}
+        pt={[4]}
+      >
+        <Box width={1} style={{ textAlign: 'center' }}>
+          <h2>{props.heading}</h2>
+        </Box>
+      </Flex>
+      <ScrollContainer
+        previous={'See Previous'}
+        next={'See More'}
+        displayAtATime={3}
+      >
+        {props.items.map((item, i) => (
+          <FAQItem
+            key={i}
+            px={3}
           >
-            <Box width={1} style={{ textAlign: 'center' }}>
-              <h2>{props.heading}</h2>
-            </Box>
-          </Flex>
-          <ScrollContainer
-            previous={'See Previous'}
-            next={'See More'}
-          >
-            {props.items.map((item, i) => (
-              <FAQItem
-                key={i}
-                px={3}
-              >
-                <div
-                  style={{
-                    padding: 20,
-                    border: '2px solid rgba(19,19,19,0.05)',
-                    borderRadius: 15
-                  }}
-                >
-                  <h4>
-                    {item.heading}
-                  </h4>
-                  <div dangerouslySetInnerHTML={{__html: item.content}} />
-                </div>
-              </FAQItem>
-            ))}
-          </ScrollContainer>
-        </ContainerWrapper>
-      </section>
-  )
-}
+            <div
+              style={{
+                padding: 20,
+                border: '2px solid rgba(19,19,19,0.05)',
+                borderRadius: 15
+              }}
+            >
+              <h4>
+                {item.heading}
+              </h4>
+              <div dangerouslySetInnerHTML={{__html: item.content}} />
+            </div>
+          </FAQItem>
+        ))}
+      </ScrollContainer>
+    </ContainerWrapper>
+  </section>

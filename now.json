@@ -15,9 +15,6 @@
       "src": "/easter",
       "status": 301,
       "headers": { "Location": "/" }
-    },{
-      "src": "/sermons",
-      "dest": "https://youtube.com/c/secondchancechurch"
     }
   ],
   "builds": [

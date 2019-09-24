@@ -24,14 +24,14 @@ const FlexScroll = styled(Flex)`
   }
 `
 
-const scrollContainer = (direction) => {
+const scrollContainer = (direction, displayAtATime) => {
   const container = document.getElementById('scrollingContainer')
   const scrollWidth = container.scrollWidth - container.clientWidth
   const currentPosition = container.scrollLeft
   const containerWidth = container.clientWidth
   const windowWidth = window.innerWidth
 
-  let scrollIncriment = containerWidth * 0.3334
+  let scrollIncriment = containerWidth * (1 / (displayAtATime || 3))
 
   if (windowWidth < 769) {
     scrollIncriment = containerWidth
@@ -97,7 +97,7 @@ const Navigation = styled.div`
   }
 `
 
-export const ScrollContainer = ({ children }) => {
+export const ScrollContainer = ({ children, displayAtATime }) => {
   const [scrollPosition, setScrollPosition] = useState(0)
   const [scrollWidth, setScrollWidth] = useState(0)
 
@@ -113,7 +113,7 @@ export const ScrollContainer = ({ children }) => {
       <FlexScrollWrapper>
         <Navigation>
           <button
-            onClick={() => setScrollPosition(scrollContainer('left'))}
+            onClick={() => setScrollPosition(scrollContainer('left', displayAtATime))}
             disabled={scrollPosition <= 10}
           >
             <span className="fa-layers fa-fw">
@@ -127,7 +127,7 @@ export const ScrollContainer = ({ children }) => {
         </FlexScroll>
         <Navigation right>
           <button
-            onClick={() => setScrollPosition(scrollContainer('right'))}
+            onClick={() => setScrollPosition(scrollContainer('right', displayAtATime))}
             disabled={scrollPosition >= scrollWidth - 10}
           >
             <span className="fa-layers fa-fw">
